@@ -11,7 +11,19 @@ class ProductController {
       quantity,
     });
 
-    res.json(createNewProduct);
+    if (res.statusCode !== 200) {
+      res.json({
+        code: 'Error',
+        message: 'Failed to save product',
+      });
+
+      return;
+    }
+
+    res.json({
+      code: 'Ok',
+      message: 'Saved product',
+    });
   }
 
   async update(req, res) {
@@ -28,7 +40,19 @@ class ProductController {
       }
     });
 
-    res.json(updateProduct);
+    if (res.statusCode !== 200) {
+      res.json({
+        code: 'Error',
+        message: 'Failed to update product',
+      });
+
+      return;
+    }
+
+    res.json({
+      code: 'Ok',
+      message: 'Updated product',
+    });
   }
 
   async delete(req, res) {
@@ -40,7 +64,19 @@ class ProductController {
       },
     });
 
-    res.json(deleteProduct);
+    if (res.statusCode !== 200) {
+      res.json({
+        code: 'Error',
+        message: 'Failed to delete product',
+      });
+
+      return;
+    }
+
+    res.json({
+      code: 'Ok',
+      message: 'Successfully deleted product',
+    });
   }
 
   async listAllProducts(req, res) {
