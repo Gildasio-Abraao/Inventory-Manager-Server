@@ -80,7 +80,9 @@ class ProductController {
   }
 
   async listAllProducts(req, res) {
-    const allProducts = await Products.findAll();
+    const allProducts = await Products.findAll({ raw: true, order: [
+      ['id', 'DESC']
+    ]});
     res.json(allProducts);
   }
 }
